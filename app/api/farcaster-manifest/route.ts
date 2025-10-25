@@ -7,31 +7,23 @@ export async function GET() {
       payload: "eyJkb21haW4iOiJwcmVkaWN0eC1naWx0LnZlcmNlbC5hcHAifQ",
       signature: "fFDUq2/mKSDhalp829LzSmlwISfqAhxNHOt++ICVjaJs7ESj3JzPyRXoP9c1s0A5bfPLYC+LOiG08E89bo+8dBs="
     },
-    frame: {
+    miniapp: {
       version: "1",
       name: "PredictX",
       iconUrl: "https://predictx-gilt.vercel.app/icon.png",
       homeUrl: "https://predictx-gilt.vercel.app",
-      imageUrl: "https://predictx-gilt.vercel.app/splash.png",
-      buttonTitle: "Play Now",
+      imageUrl: "https://predictx-gilt.vercel.app/image.png",
+      buttonTitle: "🎯 Start Predicting",
       splashImageUrl: "https://predictx-gilt.vercel.app/splash.png",
       splashBackgroundColor: "#0a0e1a",
-      webhookUrl: "https://predictx-gilt.vercel.app/api/webhook",
-      subtitle: "Predict crypto and win",
-      description: "Challenge yourself to predict Bitcoin and Ethereum price movements in quick 5-minute rounds or 24-hour challenges",
-      screenshotUrls: [
-        "https://predictx-gilt.vercel.app/splash.png"
-      ],
-      primaryCategory: "entertainment",
-      tags: ["crypto", "prediction", "game", "bitcoin", "ethereum"],
-      heroImageUrl: "https://predictx-gilt.vercel.app/splash.png",
-      tagline: "Predict crypto prices",
-      ogTitle: "PredictX",
-      ogDescription: "Predict Bitcoin and Ethereum price movements. Win rewards and climb the leaderboard!",
-      ogImageUrl: "https://predictx-gilt.vercel.app/splash.png",
-      castShareUrl: "https://predictx-gilt.vercel.app"
+      webhookUrl: "https://predictx-gilt.vercel.app/api/webhook"
     }
   };
 
-  return NextResponse.json(manifest);
+  return NextResponse.json(manifest, {
+    headers: {
+      'Content-Type': 'application/json',
+      'Cache-Control': 'public, max-age=3600, s-maxage=3600'
+    }
+  });
 }
