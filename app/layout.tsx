@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     images: ['https://predictx-gilt.vercel.app/splash.png'],
   },
   other: {
-    'fc:frame': 'vNext',
+    'fc:frame': '1',
     'fc:frame:image': 'https://predictx-gilt.vercel.app/splash.png',
     'fc:frame:image:aspect_ratio': '1:1',
     'fc:frame:button:1': 'Play Now',
@@ -48,6 +48,12 @@ export default function RootLayout({
         <meta property="og:image" content="https://predictx-gilt.vercel.app/splash.png" />
         <meta property="og:url" content="https://predictx-gilt.vercel.app" />
         <meta name="twitter:card" content="summary_large_image" />
+        <meta property="fc:frame" content="1" />
+        <meta property="fc:frame:image" content="https://predictx-gilt.vercel.app/splash.png" />
+        <meta property="fc:frame:image:aspect_ratio" content="1:1" />
+        <meta property="fc:frame:button:1" content="Play Now" />
+        <meta property="fc:frame:button:1:action" content="link" />
+        <meta property="fc:frame:button:1:target" content="https://predictx-gilt.vercel.app" />
       </head>
       <body suppressHydrationWarning>{children}</body>
     </html>
