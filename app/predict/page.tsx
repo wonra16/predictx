@@ -131,15 +131,16 @@ function PredictContent() {
 
       if (data.success) {
         console.log('✅ SUCCESS! Redirecting to profile...');
-        router.push('/profile');
+        // Use window.location instead of router.push
+        window.location.href = '/profile';
       } else {
         console.error('❌ API Error:', data.error);
         alert(data.error || 'Failed to submit prediction');
+        setSubmitting(false);
       }
     } catch (error) {
       console.error('💥 Submit error:', error);
       alert('Failed to submit prediction. Please try again.');
-    } finally {
       setSubmitting(false);
     }
   };
@@ -173,7 +174,14 @@ function PredictContent() {
         <div className="max-w-4xl mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <button
-              onClick={() => router.push('/')}
+              onClick={async () => {
+                try {
+                  const sdk = (await import('@farcaster/frame-sdk')).default;
+                  sdk.actions.close();
+                } catch {
+                  router.push('/');
+                }
+              }}
               className="w-10 h-10 rounded-xl bg-[#111827] border border-white/10 hover:border-cyan-500/50 flex items-center justify-center transition-all"
             >
               <ChevronLeft className="w-5 h-5 text-gray-400" />
