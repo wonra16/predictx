@@ -1,0 +1,15 @@
+<svg width="1200" height="630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1e3a8a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#7c3aed;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <circle cx="600" cy="315" r="200" fill="none" stroke="white" stroke-width="3" opacity="0.2"/>
+  <circle cx="600" cy="315" r="150" fill="none" stroke="white" stroke-width="3" opacity="0.3"/>
+  <circle cx="600" cy="315" r="100" fill="none" stroke="white" stroke-width="3" opacity="0.4"/>
+  <text x="600" y="250" font-family="Arial, sans-serif" font-size="80" font-weight="bold" fill="white" text-anchor="middle">🔮 Crypto Crystal</text>
+  <text x="600" y="350" font-family="Arial, sans-serif" font-size="40" fill="white" text-anchor="middle" opacity="0.9">Predict Bitcoin & Ethereum Prices</text>
+  <text x="600" y="420" font-family="Arial, sans-serif" font-size="32" fill="white" text-anchor="middle" opacity="0.8">Can you see the future?</text>
+</svg>
