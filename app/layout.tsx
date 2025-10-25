@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     'fc:frame:image': '/splash.png',
     'fc:frame:button:1': 'Start Predicting',
     'fc:frame:button:1:action': 'link',
-    'fc:frame:button:1:target': 'https://predictx.vercel.app',
+    'fc:frame:button:1:target': 'https://predictx-gilt.vercel.app',
   },
 };
 
