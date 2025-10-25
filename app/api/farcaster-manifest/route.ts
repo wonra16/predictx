@@ -11,9 +11,12 @@ export async function GET() {
       version: "next",
       name: "PredictX",
       iconUrl: "https://predictx-gilt.vercel.app/icon.png",
+      homeUrl: "https://predictx-gilt.vercel.app",
+      imageUrl: "https://predictx-gilt.vercel.app/splash.png",
+      buttonTitle: "Play Now",
       splashImageUrl: "https://predictx-gilt.vercel.app/splash.png",
       splashBackgroundColor: "#0a0e1a",
-      homeUrl: "https://predictx-gilt.vercel.app"
+      webhookUrl: "https://predictx-gilt.vercel.app/api/webhook"
     }
   };
 
