@@ -19,7 +19,7 @@ export async function GET() {
       splashImageUrl: `${baseUrl}/api/splash`, // 200x200 PNG
       splashBackgroundColor: "#0a0e1a",
       webhookUrl: `${baseUrl}/api/webhook`,
-      description: "Predict Bitcoin & Ethereum prices in quick 5-min or 24-hour challenges. Win points and climb the leaderboard!",
+      description: "Predict Bitcoin and Ethereum prices in quick 5-min or 24-hour challenges. Win points and climb the leaderboard!",
       subtitle: "Crypto Price Prediction Game"
     }
   };
