@@ -73,6 +73,8 @@ function PredictContent() {
   }, [challengeType, roundInfo]);
 
   const handleSubmit = async () => {
+    console.log('🎯 SUBMIT CLICKED!', { direction, currentPrice });
+    
     if (!direction) {
       alert('Please select UP or DOWN first!');
       return;
@@ -90,10 +92,18 @@ function PredictContent() {
       pfpUrl: ''
     };
 
+    console.log('👤 User data:', userData);
     setSubmitting(true);
     
     try {
-      console.log('🎯 Submitting prediction with LIVE price:', currentPrice);
+      console.log('📤 Sending prediction...', {
+        fid: userData.fid,
+        coinId,
+        direction,
+        challengeType,
+        startPrice: currentPrice,
+        roundId: roundInfo?.roundId
+      });
       
       const response = await fetch('/api/predict', {
         method: 'POST',
@@ -108,22 +118,26 @@ function PredictContent() {
           direction,
           challengeType,
           exactPrice: 0,
-          startPrice: currentPrice, // BUTONA BASILDIĞI ANDAKİ LIVE FİYAT
+          startPrice: currentPrice,
           roundId: roundInfo?.roundId,
           roundStartTime: roundInfo?.startTime,
           roundEndTime: roundInfo?.endTime,
         }),
       });
 
+      console.log('📥 Response status:', response.status);
       const data = await response.json();
+      console.log('📊 Response data:', data);
 
       if (data.success) {
+        console.log('✅ SUCCESS! Redirecting to profile...');
         router.push('/profile');
       } else {
+        console.error('❌ API Error:', data.error);
         alert(data.error || 'Failed to submit prediction');
       }
     } catch (error) {
-      console.error('Submit error:', error);
+      console.error('💥 Submit error:', error);
       alert('Failed to submit prediction. Please try again.');
     } finally {
       setSubmitting(false);
