@@ -400,6 +400,7 @@ export default function ProfilePage() {
                 {/* Share Button */}
                 <button
                   onClick={() => {
+                    const coinName = activePrediction.coinId === 'bitcoin' ? 'Bitcoin' : 'Ethereum';
                     const text = `🎯 I predicted ${coinName} will go ${activePrediction.direction === 'up' ? 'UP ↗️' : 'DOWN ↘️'} from $${activePrediction.startPrice.toLocaleString()}!\n\nJoin me on PredictX!`;
                     const shareUrl = `https://warpcast.com/~/compose?text=${encodeURIComponent(text)}&embeds[]=${encodeURIComponent('https://predictx-gilt.vercel.app')}`;
                     window.open(shareUrl, '_blank');
