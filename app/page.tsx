@@ -123,7 +123,7 @@ export default function Home() {
           <div className="absolute bottom-20 right-10 w-96 h-96 bg-cyan-500/5 rounded-full blur-3xl" />
         </div>
 
-        <div className="relative z-10 max-w-4xl mx-auto px-4 py-6">
+        <div className="relative z-10 max-w-md mx-auto px-4 py-6">
           {/* Header */}
           <motion.div
             initial={{ opacity: 0, y: -20 }}

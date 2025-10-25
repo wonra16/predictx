@@ -12,7 +12,7 @@ const shareEmbed = {
       type: "launch_frame",
       name: "PredictX",
       url: baseUrl,
-      splashImageUrl: `${baseUrl}/splash.png`,
+      splashImageUrl: `${baseUrl}/api/splash`,
       splashBackgroundColor: "#0a0e1a"
     }
   }

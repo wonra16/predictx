@@ -171,7 +171,7 @@ function PredictContent() {
       </div>
 
       <div className="relative z-10 bg-[#1a1f35]/80 backdrop-blur-md border-b border-cyan-500/20 sticky top-0">
-        <div className="max-w-4xl mx-auto px-4 py-4">
+        <div className="max-w-md mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <button
               onClick={() => {
@@ -191,7 +191,7 @@ function PredictContent() {
         </div>
       </div>
 
-      <div className="relative z-10 max-w-4xl mx-auto px-4 py-6">
+      <div className="relative z-10 max-w-md mx-auto px-4 py-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}

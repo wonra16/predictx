@@ -1,6 +1,8 @@
 import { NextResponse } from 'next/server';
 
 export async function GET() {
+  const baseUrl = 'https://predictx-gilt.vercel.app';
+  
   const manifest = {
     accountAssociation: {
       header: "eyJmaWQiOjMzOTk3MiwidHlwZSI6ImN1c3RvZHkiLCJrZXkiOiIweDIxMUNGMzAwNjFDNTIyZDc0MjgzOGQzODc2ZEY2NTk3NzExQ0NCRTMifQ",
@@ -10,13 +12,15 @@ export async function GET() {
     miniapp: {
       version: "1",
       name: "PredictX",
-      iconUrl: "https://predictx-gilt.vercel.app/icon.png",
-      homeUrl: "https://predictx-gilt.vercel.app",
-      imageUrl: "https://predictx-gilt.vercel.app/image.png",
+      iconUrl: `${baseUrl}/api/icon`, // 200x200 PNG
+      homeUrl: baseUrl,
+      imageUrl: `${baseUrl}/api/og-embed`,
       buttonTitle: "🎯 Start Predicting",
-      splashImageUrl: "https://predictx-gilt.vercel.app/splash.png",
+      splashImageUrl: `${baseUrl}/api/splash`, // 200x200 PNG
       splashBackgroundColor: "#0a0e1a",
-      webhookUrl: "https://predictx-gilt.vercel.app/api/webhook"
+      webhookUrl: `${baseUrl}/api/webhook`,
+      description: "Predict Bitcoin & Ethereum prices in quick 5-min or 24-hour challenges. Win points and climb the leaderboard!",
+      subtitle: "Crypto Price Prediction Game"
     }
   };
 

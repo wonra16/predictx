@@ -59,7 +59,7 @@ export default function LeaderboardPage() {
 
       {/* Header */}
       <div className="relative z-10 bg-[#1a1f35]/80 backdrop-blur-md border-b border-cyan-500/20 sticky top-0">
-        <div className="max-w-4xl mx-auto px-4 py-4">
+        <div className="max-w-md mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
               <button
@@ -80,7 +80,7 @@ export default function LeaderboardPage() {
         </div>
       </div>
 
-      <div className="relative z-10 max-w-4xl mx-auto px-4 py-6">
+      <div className="relative z-10 max-w-md mx-auto px-4 py-6">
         {/* Filter Tabs */}
         <div className="flex gap-2 mb-6">
           <button
@@ -316,7 +316,7 @@ export default function LeaderboardPage() {
 
       {/* Bottom Navigation */}
       <div className="fixed bottom-0 left-0 right-0 bg-[#1a1f35]/95 backdrop-blur-md border-t border-white/10 z-20">
-        <div className="max-w-4xl mx-auto px-4 py-3 flex gap-3">
+        <div className="max-w-md mx-auto px-4 py-3 flex gap-3">
           <button
             onClick={() => window.location.href = '/'}
             className="flex-1 py-3 bg-[#111827] hover:bg-[#1f2937] text-white rounded-xl border border-white/10 hover:border-cyan-500/30 font-semibold transition-all flex items-center justify-center gap-2"

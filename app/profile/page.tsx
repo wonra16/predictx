@@ -172,7 +172,7 @@ export default function ProfilePage() {
 
       {/* Header */}
       <div className="relative z-10 bg-[#1a1f35]/80 backdrop-blur-md border-b border-cyan-500/20 sticky top-0">
-        <div className="max-w-4xl mx-auto px-4 py-4">
+        <div className="max-w-md mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <button
               onClick={() => window.location.href = '/'}
@@ -191,7 +191,7 @@ export default function ProfilePage() {
         </div>
       </div>
 
-      <div className="relative z-10 max-w-4xl mx-auto px-4 py-6">
+      <div className="relative z-10 max-w-md mx-auto px-4 py-6">
         {/* User Card */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -585,7 +585,7 @@ export default function ProfilePage() {
 
       {/* Bottom Navigation */}
       <div className="fixed bottom-0 left-0 right-0 bg-[#1a1f35]/95 backdrop-blur-md border-t border-white/10 z-20">
-        <div className="max-w-4xl mx-auto px-4 py-3">
+        <div className="max-w-md mx-auto px-4 py-3">
           <button
             onClick={() => window.location.href = '/'}
             className="w-full py-3 bg-gradient-to-r from-cyan-500 to-cyan-600 hover:from-cyan-600 hover:to-cyan-700 text-white font-semibold rounded-xl shadow-lg shadow-cyan-500/30 transition-all flex items-center justify-center gap-2"

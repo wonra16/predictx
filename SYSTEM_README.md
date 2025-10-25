@@ -1,15 +1,17 @@
-# PredictX v22 - Sistem Durumu
+# PredictX v23 - Logo & Splash Screen Düzeltmesi
 
 ## 🔧 Son Yapılan Değişiklikler
 
-**Sorun**: Farcaster'da paylaşım yapıldığında butonlu embed görünmüyordu.
+**Sorun 1**: Mini Apps listesinde logo görünmüyordu (placeholder icon)
+**Sorun 2**: Splash screen düzgün yüklenmiyordu
+**Sorun 3**: Desktop'ta çok geniş görünüyordu
 
-**Çözüm**:
-1. Frame v1 → Mini App (Frame v2) formatına geçildi
-2. `app/layout.tsx` - JSON.stringify ile miniapp embed eklendi
-3. `app/api/farcaster-manifest/route.ts` - `miniapp` key'e güncellendi
-4. `app/api/og-embed/route.tsx` - 3:2 aspect ratio dynamic image (YENİ)
-5. `app/share/layout.tsx` - Share için özel metadata (YENİ)
+**Çözümler**:
+1. ✅ **Icon API** - `/api/icon` route ile 200x200px PNG
+2. ✅ **Splash API** - `/api/splash` route ile 200x200px PNG (SVG yerine!)
+3. ✅ **Manifest güncellendi** - iconUrl ve splashImageUrl API endpoint'lere
+4. ✅ **Desktop responsive** - max-w-md ile 424px Farcaster modal boyutuna uyumlu
+5. ✅ **Description & subtitle eklendi** manifest'e
 
 ## 🚀 Deploy
 
@@ -18,16 +20,31 @@ npm install
 vercel --prod
 ```
 
-Test: `https://predictx-gilt.vercel.app/.well-known/farcaster.json`
+Test: 
+- Manifest: `https://predictx-gilt.vercel.app/.well-known/farcaster.json`
+- Icon: `https://predictx-gilt.vercel.app/api/icon`
+- Splash: `https://predictx-gilt.vercel.app/api/splash`
 
 ## 📁 Kritik Dosyalar
 
-- `app/layout.tsx` - Ana embed metadata
-- `app/api/farcaster-manifest/route.ts` - Manifest endpoint
-- `app/api/og-embed/route.tsx` - 1200x800px embed image
-- `next.config.js` - .well-known redirect
+- `app/api/icon/route.tsx` - 200x200px PNG icon (YENİ)
+- `app/api/splash/route.tsx` - 200x200px PNG splash (YENİ)
+- `app/api/farcaster-manifest/route.ts` - Icon URL'leri güncellendi
+- `app/layout.tsx` - Splash URL güncellendi
+- `app/page.tsx` - max-w-md responsive
+- `app/predict/page.tsx` - max-w-md responsive
+- `app/profile/page.tsx` - max-w-md responsive
+- `app/leaderboard/page.tsx` - max-w-md responsive
+
+## ⚠️ Önemli Notlar
+
+- **PNG zorunlu**: SVG production'da desteklenmiyor!
+- **Icon**: 200x200px tam
+- **Splash**: 200x200px tam + background color
+- **Desktop**: 424px width (Farcaster web modal boyutu)
+- **Mobile**: Device width'e göre adapte
 
 ---
 
-**NOT**: Her değişiklikte bu dosya güncellenir. Kod çalışıyor, mevcut versiyonu bozmadan düzeltmeler yapıldı.
+**NOT**: Her değişiklikte bu dosya güncellenir. Kod çalışıyor, artık logo ve splash düzgün görünecek!
 

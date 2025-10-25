@@ -13,7 +13,7 @@ const miniAppEmbed = {
       type: "launch_frame",
       name: "PredictX",
       url: baseUrl,
-      splashImageUrl: `${baseUrl}/splash.png`, // 200x200px
+      splashImageUrl: `${baseUrl}/api/splash`, // 200x200px PNG
       splashBackgroundColor: "#0a0e1a"
     }
   }
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   title: 'PredictX - Crypto Prediction Game',
   description: 'Predict crypto prices and win on Farcaster',
   icons: {
-    icon: '/icon.png',
+    icon: '/api/icon',
   },
   openGraph: {
     title: 'PredictX',
