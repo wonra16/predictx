@@ -174,13 +174,9 @@ function PredictContent() {
         <div className="max-w-4xl mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <button
-              onClick={async () => {
-                try {
-                  const sdk = (await import('@farcaster/frame-sdk')).default;
-                  sdk.actions.close();
-                } catch {
-                  router.push('/');
-                }
+              onClick={() => {
+                // Ana sayfaya dön
+                window.location.href = '/';
               }}
               className="w-10 h-10 rounded-xl bg-[#111827] border border-white/10 hover:border-cyan-500/50 flex items-center justify-center transition-all"
             >
