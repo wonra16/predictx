@@ -1008,23 +1008,17 @@ export function registerRoutes(app: Express): void {
     }
   });
 
-  // ============= CRON CHECK API =============
+  // ============= CHECK RESULTS API =============
   
-  // Check and resolve pending predictions (Called by Vercel Cron every 5 minutes)
-  app.get("/api/cron-check", async (req, res) => {
+  // Check and resolve pending predictions (Called from frontend every 30 seconds)
+  app.get("/api/check-results", async (req, res) => {
     try {
-      // Vercel Cron Authentication
-      const authHeader = req.headers.authorization;
-      const cronSecret = process.env.CRON_SECRET;
-      
-      if (cronSecret && authHeader !== `Bearer ${cronSecret}`) {
-        console.error('❌ Unauthorized cron attempt');
-        return res.status(401).json({ error: 'Unauthorized' });
-      }
+      // Rate limiting: max 10 predictions per request
+      const limit = Math.min(parseInt(req.query.limit as string) || 10, 10);
 
-      console.log('🔄 Starting cron job...');
+      console.log('🔄 Checking results...');
       const now = Date.now();
-      const pendingPredictions = await storage.getPendingResults(100);
+      const pendingPredictions = await storage.getPendingResults(limit);
       
       let checked = 0;
       let resolved = 0;
@@ -1123,7 +1117,7 @@ export function registerRoutes(app: Express): void {
         }
       }
 
-      console.log(`✅ Cron completed: ${checked} checked, ${resolved} resolved`);
+      console.log(`✅ Check completed: ${checked} checked, ${resolved} resolved`);
 
       res.json({
         success: true,
@@ -1134,7 +1128,7 @@ export function registerRoutes(app: Express): void {
         timestamp: now,
       });
     } catch (error) {
-      console.error('❌ Cron job error:', error);
+      console.error('❌ Check results error:', error);
       res.status(500).json({ 
         success: false, 
         error: 'Failed to check results'
