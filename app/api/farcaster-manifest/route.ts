@@ -11,7 +11,7 @@ export async function GET() {
     },
     miniapp: {
       version: "1",
-      name: "PredictX",
+      name: "PredictX Beta",
       iconUrl: `${baseUrl}/api/icon`, // 200x200 PNG
       homeUrl: baseUrl,
       imageUrl: `${baseUrl}/api/og-embed`,
