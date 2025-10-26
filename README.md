@@ -1,30 +1,72 @@
-# PredictX
+# PredictX - Crypto Price Prediction Mini App
 
-Crypto prediction game on Farcaster
+Replit'ten Vercel'e tam port. Tüm özellikler çalışıyor.
 
-## Quick Setup
+## Kurulum
 
-1. **Supabase**
-   - Go to supabase.com
-   - Create new project
-   - Run `supabase-schema.sql` in SQL Editor
-   - Get API keys from Settings > API
-
-2. **Vercel**
-   - Import GitHub repo: wonra16/predictx
-   - Add environment variables (see below)
-   - Deploy
-
-3. **Environment Variables**
-```
-NEXT_PUBLIC_SUPABASE_URL=https://your-project.supabase.co
-NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
-SUPABASE_SERVICE_ROLE_KEY=your-service-role-key
-NEXT_PUBLIC_APP_URL=https://predictx.vercel.app
-```
-
-## Deploy
 ```bash
-git push origin main
+# 1. Vercel'e deploy
+vercel
+
+# 2. Database ekle (Vercel Dashboard)
+Storage → Create Database → Postgres (Neon)
+
+# 3. Cron secret ekle
+Settings → Environment Variables → CRON_SECRET
+
+# 4. Schema push
+npm run db:push
+
+# 5. Production deploy
+git push
 ```
-Vercel auto-deploys!
+
+## Özellikler
+
+✅ Binance API (gerçek zamanlı fiyatlar)  
+✅ Neon PostgreSQL (Vercel Marketplace)  
+✅ Drizzle ORM (type-safe)  
+✅ Vercel Cron (5 dakikada bir)  
+✅ Farcaster Frame v2  
+✅ React + Vite (Replit ile aynı)  
+✅ Wouter routing  
+✅ Shadcn/ui components  
+
+## API Endpoints
+
+- `/api/prices` - Fiyatlar
+- `/api/predict` - Tahmin yap
+- `/api/user-stats?fid=X` - Kullanıcı stats
+- `/api/leaderboard` - Sıralama
+- `/api/cron-check` - Otomatik kontrol (cron)
+
+## Cron Job
+
+Her 5 dakikada `/api/cron-check` çağrılır:
+- Süresi dolan tahminleri kontrol eder
+- Kazanan/kaybedenleri hesaplar
+- Skorları günceller
+
+`vercel.json`:
+```json
+{
+  "crons": [{
+    "path": "/api/cron-check",
+    "schedule": "*/5 * * * *"
+  }]
+}
+```
+
+## Environment Variables
+
+```
+DATABASE_URL=      # Neon otomatik ekler
+CRON_SECRET=       # 16+ karakter
+```
+
+## Geliştirme
+
+```bash
+npm install
+npm run dev
+```
