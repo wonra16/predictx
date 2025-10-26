@@ -1,5 +1,5 @@
 // Auto Result Checker Hook
-// Automatically polls /api/cron/check-results every 30 seconds
+// Automatically polls /api/check-results every 30 seconds
 // to resolve pending predictions and update scores
 
 import { useEffect, useRef } from 'react';
@@ -14,21 +14,16 @@ export function useAutoResultChecker() {
     // Function to check and resolve pending results
     const checkResults = async () => {
       try {
-        const response = await fetch('/api/cron/check-results', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        });
+        const response = await fetch('/api/check-results?limit=10');
 
         if (response.ok) {
           const data = await response.json();
           
-          // If any predictions were processed, invalidate relevant queries
-          if (data.success && data.data.processed > 0) {
-            console.log(`✅ Auto-resolved ${data.data.processed} predictions`);
+          // If any predictions were resolved, invalidate relevant queries
+          if (data.success && data.resolved > 0) {
+            console.log(`✅ Auto-resolved ${data.resolved} predictions`);
             
-            // Invalidate all user-related queries to refresh data (use exact: false for prefix matching)
+            // Invalidate all user-related queries to refresh data
             queryClient.invalidateQueries({ queryKey: ['/api/user/predictions'], exact: false });
             queryClient.invalidateQueries({ queryKey: ['/api/user/active'], exact: false });
             queryClient.invalidateQueries({ queryKey: ['/api/stats'], exact: false });
